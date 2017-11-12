@@ -27,17 +27,18 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
+  <script type="text/javascript" src="scripts/big.js"></script>
+
 </head>
-<body>
+<body onload="advance(scenario.zero)">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
       <div class="twelve columns" style="margin-top: 10%">
-        <h5>Where does your dystopia start?</h5>
-        <button>Corporation-Controlled Dystopia</button><br>
-        <button>Post-Apocalyptic Dystopia</button>
+        <p id="question"></p>
+        <div id="buttonBox"></div>
       </div>
     </div>
   </div>
