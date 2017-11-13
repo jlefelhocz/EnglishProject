@@ -1,5 +1,5 @@
-var score = 1;
-final = 1;
+var score = 0;
+final = 0;
 
 var eyecolor = "";
 var height = "";
@@ -47,7 +47,7 @@ function advance(s) {
 };
 
 function checkScore() {
-    final = (score*100)/25;
+    final = parseInt((score*100)/30, 10);
 }
 
 function finalPage() {
@@ -104,7 +104,7 @@ var scenario = {
         question: "You make it back to camp just as dusk is setting in. You rummage through your supplies and find a CozeeYoo automatic fire-starting kit. Nifty. You light a fire to warm yourself and your unconscious companion. The man is still breathing shallowly, but it seems that the bandages have stopped the bleeding. You briefly feel proud of your actions but realize that they may come at a great cost in the future. As you begin eating your dinner, you wonder about the man’s health. He’s probably dehydrated from this ordeal… Do you take the time rehydrate him?",
         buttons: [["Yes, I’m in better shape than him. It’s the least I can do.", "advance(scenario.a16)"],
         ["No, that’s so inefficient. Do you know how long dribbling water into someone's mouth takes? He can drink when he wakes up.", "advance(scenario.a17)"],
-        ["No, I’m not even sure he’s going to survive. I’m not wasting anymore supplies on him until he shows some improvement.", "advance(scenario.a17)"]],
+        ["No, I’m not even sure he’s going to survive. I’m not wasting anymore supplies on him until he shows some improvement.", "advance(scenario.a17b)"]],
         add: 0
     },
     a16: {
@@ -113,16 +113,21 @@ var scenario = {
         //not like Crake
         add: 0
     },
-    a17: {
+    a17b: {
         question: "You decide not to give the man water. As of now, it’s simply not worth it. Honestly, it was the only rational thing to do. Exhausted from your day’s labor, you fall asleep.",
         buttons: [["Continue", "advance(scenario.a18)"]],
         add: 5
+    },
+    a17: {
+        question: "You decide not to give the man water. As of now, it’s simply not worth it. Honestly, it was the only rational thing to do. Exhausted from your day’s labor, you fall asleep.",
+        buttons: [["Continue", "advance(scenario.a18)"]],
+        add: 2
     },
     a18: {
         question: "You wake the next day shortly after dawn. To your surprise, you find that the unconscious man is now awake. “Thank you for taking care of my wounds. I fear I do not have long however.” He pauses with a contorted thinking face, estimating how soon it will be until the bioforms melt him from the inside-out. “There is no time to lose,” he proclaims. “I thank you for your kindness stranger but I must go now. I must go see what has become of my family. Only then will I be at ease.” He gets up painfully and turns to leave. “Wait!..” you shout.",
         buttons: [["It’s dangerous to go alone! Take this.” *give him the knife*", "advance(scenario.a23)"],
         ["You’re injured- there’s no way you’ll survive on your own! I’ll go with you.", "advance(scenario.a23)"],
-        ["Don’t delude yourself. Who knows what’s waiting for you out there! Leaving now is suicide.", "advance(scenario.a24)"],
+        ["Don’t delude yourself. Who knows what’s waiting for you out there! Leaving now is suicide.", "advance(scenario.a24a)"],
         ["I need you to stick around. Your family is dead for sure. Trust me it’s pointless to look for them.", "advance(scenario.a24)"]],
         add: 0
     },
@@ -131,6 +136,11 @@ var scenario = {
         buttons: [["Continue", "advance(scenario.a25)"]],
         //not like Crake
         add: 0
+    },
+    a24a: {
+        question: "The man frowns sharply at your words. “You may speak the truth, but this is something I need to find out for myself. Is there nothing that you hold dear?” With those parting remarks the man leaves your presence and disappears into the forest.",
+        buttons: [["Continue", "advance(scenario.a25)"]],
+        add: 2
     },
     a24: {
         question: "The man frowns sharply at your words. “You may speak the truth, but this is something I need to find out for myself. Is there nothing that you hold dear?” With those parting remarks the man leaves your presence and disappears into the forest.",
@@ -141,7 +151,7 @@ var scenario = {
         question: "Hours pass as you lie and gaze at the sky. Who was that guy anyways? Where was he headed? Lost and alone, you ponder your next course of action. What do you decide to do?",
         buttons: [["“I should follow that man. Perhaps I can catch up to him and help him find his family, or what’s left of them atleast. I don’t want to be alone.", "advance(scenario.a29)"],
         ["I’m going to head inland. Wherever that man is going… there must be supplies. That’s my best bet at survival.", "advance(scenario.a30)"],
-        ["Anywhere is as good as here. I might as well just pick a direction and walk.", "advance(scenario.a30)"]],
+        ["Anywhere is as good as here. I might as well just pick a direction and walk.", "advance(scenario.a30b)"]],
         add: 0
     },
     a29: {
@@ -152,18 +162,29 @@ var scenario = {
     a30: {
         question: "Without a clue as to what to do next, you decide that heading inland is your best bet. That man seemed to know where he is going, and it’s likely that he’s heading to a place where there might be supplies. You pack up your supplies and head into the woods.",
         buttons: [["Continue", "advance(scenario.a31)"]],
-        add: 0
+        add: 5
+    },
+    a30b: {
+        question: "Without a clue as to what to do next, you decide that heading inland is your best bet. That man seemed to know where he is going, and it’s likely that he’s heading to a place where there might be supplies. You pack up your supplies and head into the woods.",
+        buttons: [["Continue", "advance(scenario.a31)"]],
+        add: 2
     },
     a31: {
         question: "You journey into the woods, tracking the footprints of the mysterious man. The weather is cool and you make good progress. After a few hours of travel you hear a strange anguished sort of oinking and rustling in the bushes. You decide to uncover the source of the noise. You make your way through the underbrush to find an injured pigoon! One of its hoofed legs is snared in a Transparo-trap. The clever pigoon has nearly shimmied its way out the trap, and it is enraged. What do you do?",
         buttons: [["Kill it. That’s my ticket to bacon-town and nothing on this planet can stop me from boarding. It’s just a pig after all. Well sort of.", "advance(scenario.a35)"],
-        ["Flee. I don’t want to mess with that pigoon. Something could go wrong and I’m not risking it.", "advance(scenario.a36)"],
+        ["Flee. I don’t want to mess with that pigoon. Something could go wrong and I’m not risking it.", "advance(scenario.a36a)"],
         ["Kill it? It’s just trying to survive like I am. Plus I’m not starving yet. I can spare its life and scavenge for supplies in a nearby town.", "advance(scenario.a36)"]],
         add: 0
     },
     a35: {
         question: "You walk over to the thrashing pigoon. It eyes you down as you deftly move in and cut it down with your combat knife. No sense wasting a bullet when you have to cut up the meat anyway! You pull out your CozeeYoo fire starter and get to work preparing the meat. After 15 minutes of work and cooking you get to taste the “fruits of your effort”. Sweet, delicious bacon.",
         buttons: [["Continue", "advance(scenario.a37)"]],
+        add: 3
+    },
+    a36a: {
+        question: "You decide not to kill the pigoon and you flee before it gets loose and goes on a rampage. You feel a pang of regret as you imagine the taste of that sweet sweet bacon. You plod onwards, the thoughts of past foods filling your mind.",
+        buttons: [["Continue", "advance(scenario.a37)"]],
+        //not like Crake
         add: 5
     },
     a36: {
@@ -173,7 +194,7 @@ var scenario = {
         add: 0
     },
     a37: {
-        question: "The sun is steadily descending as you finally make your way out of the forest. In the distance you see a compound! Overjoyed at the prospect of shelter, water, and food among other goodies, you start walking energetically towards the ramparts. You stop dead in your tracks when you near the gates. A cloaked person is standing inside the security checkpoint,a rifle slung over their back, which, fortunately for you is pointed towards you. That could change in an instant though. Quick! What do you do?",
+        question: "The sun is steadily descending as you finally make your way out of the forest. In the distance you see a compound! Overjoyed at the prospect of shelter, water, and food among other goodies, you start walking energetically towards the ramparts. You stop dead in your tracks when you near the gates. A cloaked person is standing inside the security checkpoint,a rifle slung over their back, which, fortunately for you is pointed away you. That could change in an instant though. Quick! What do you do?",
         buttons: [["Shoot first ask later. These lands are lawless and there’s no sense in risking my life for a stranger. This person would do the same in my position- nothing personal. Plus that rifle would be a great addition for protection.", "advance(scenario.a40)"],
         ["Aim your gun and tell them to turn around. You will lose the advantage if things go south, but just maybe you can avoid more needless bloodshed.", "advance(scenario.a41)"]],
         add: 0
@@ -181,14 +202,14 @@ var scenario = {
     a40: {
         question: "You whip your spraygun up to aim and fire immediately. The virtual bullet travels unimpeded through the window pane and connect with the figure. With a crash, the cloaked figure falls to the ground. You make your way into the security checkpoint to check the body but trip over a concealed tripwire as you enter the doorway. You land hard on the pieces of the plastic mannequin as the door slams shut, locking into place. You’ve been duped!",
         buttons: [["Continue", "advance(scenario.a46)"]],
-        add: 5
+        add: 0
     },
     a41: {
         question: "You calmly command the figure to turn around. It does not move. What do you do?",
         buttons: [["Pull the trigger. They wasted their chance.", "advance(scenario.a44)"],
         ["Something’s not adding up. I’m going to investigate", "advance(scenario.a45)"]],
         //not like Crake
-        add: 0
+        add: 5
     },
     a44: {
         question: "You pull the trigger. The virtual bullet travels unimpeded through the window pane and connect with the figure. With a crash, the cloaked figure falls to the ground. You make your way into the security checkpoint to check the body but trip over a concealed tripwire as you enter the doorway. You land hard on the pieces of the plastic mannequin as the door slams shut, locking into place. You’ve been duped!",
